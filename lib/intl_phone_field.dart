@@ -243,8 +243,11 @@ class IntlPhoneField extends StatefulWidget {
   //enable the autofill hint for phone number
   final bool disableAutoFillHints;
 
+  final bool openCountryList;
+
   const IntlPhoneField({
     Key? key,
+    required this.openCountryList,
     this.initialCountryCode,
     this.languageCode = 'en',
     this.disableAutoFillHints = false,
@@ -444,7 +447,11 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
         decoration: widget.dropdownDecoration,
         child: InkWell(
           borderRadius: widget.dropdownDecoration.borderRadius as BorderRadius?,
-          onTap: null,
+          onTap: !widget.openCountryList
+              ? null
+              : widget.enabled
+                  ? _changeCountry
+                  : null,
           child: Padding(
             padding: widget.flagsButtonPadding,
             child: Row(
