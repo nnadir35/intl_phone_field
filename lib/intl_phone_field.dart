@@ -247,7 +247,7 @@ class IntlPhoneField extends StatefulWidget {
 
   const IntlPhoneField({
     Key? key,
-    required this.openCountryList,
+    this.openCountryList = false,
     this.initialCountryCode,
     this.languageCode = 'en',
     this.disableAutoFillHints = false,
